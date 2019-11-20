@@ -1,0 +1,78 @@
+7.1
+a)1FN, porque existem atributos que não dependem da chave primária: Editor e Endereco_Editor.
+
+b)
+->2FN
+	Livro(Titulo_Livro, Nome_Autor, Editor, Endereco_Editor, Tipo_Livro, Preco, NoPaginas, Ano_Publicacao)
+	Autor(Nome_Autor, Afiliacao_Autor)
+->3FN
+	Livro(Titulo_Livro, Nome_Autor, Editor, Tipo_Livro, NoPaginas, Ano_Publicacao)
+	Preco(Tipo_Livro, NoPaginas, Preco)
+	Autor(Nome_Autor, Afiliacao_Autor)
+	Editor(Editor, Endereco_Editor)
+
+
+
+7.2
+a)
+A e B
+
+b)
+->1FN
+	(A, B, C, D, E, F, G, H, I, J)
+
+->2FN
+	(A, E, D, I, J)
+	(A, B, C)
+	(B, F, G, H)
+
+c)
+->3FN
+	(A, D, E)
+	(D, I, J)
+	(A, B, C)
+	(B, F)
+	(F, G, H)
+
+
+
+7.3
+a) 
+A e B
+
+b)
+->1FN
+	(A, B, C, D, E)
+
+->2FN
+	(A, B, C, D, E)
+
+->3FN
+	(A, B, C, D, E)
+
+c)
+->BCNF
+	(B, C, D)
+	(D, E)
+	(C, A)
+
+7.4
+a)
+A e B
+
+b)
+->1FN
+	(A, B, C, D, E)
+
+->2FN
+	(A, B, C, E)
+	(C, D)
+c)
+->3FN
+	(A, B, C, E)
+	(C, D)
+d)
+->BCNF
+	(A, B, E)
+	(A, C)
+	(C, D)

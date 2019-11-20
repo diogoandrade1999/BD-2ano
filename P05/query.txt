@@ -1,0 +1,45 @@
+﻿5.1
+a)
+π Ssn,Fname,Minit,Lname,Pname,Pnumber ((project ⨝(Pnumber=Pno) works_on) ⨝(Essn=Ssn) employee)
+
+b)
+temp = ρ temp (π Ssn (σ (Fname='Carlos' ∧ Minit='D' ∧ Lname='Gomes') employee))
+π Fname,Minit,Lname (temp ⨝(Super_ssn=temp.Ssn) employee)
+
+c)
+temp = ρ temp γ Pno; sum(Hours)->sum_Hours works_on
+π Pname,temp.sum_Hours (temp ⨝(temp.Pno=Pnumber) project)
+
+d)
+temp = ρ temp π Pnumber (σ(Pname='Aveiro Digital' ∧ Dnum=3) project)
+π Fname,Minit,Lname,Hours ((σ(Hours>20) works_on ⨝(Pno=temp.Pnumber) temp) ⨝ employee)
+
+e)
+π Fname,Minit,Lname,Essn σ(Essn=null) (employee ⟕(Essn=Ssn) works_on)
+
+f) -----------------falta algo----------------------
+temp = ρ temp π Ssn,Salary,Dno (σ(Sex='F') employee)
+γ Ssn; avg(temp.Salary)->media_Salary (temp ⨝(Dnumber=temp.Dno) department)
+
+g)
+σ(count_Essn>2) γ Fname,Minit,Lname; count(Essn)->count_Essn (employee ⨝(Essn=Ssn) dependent)
+
+h)------------------nao sei ver os getores------------
+
+i)
+temp = ρ temp π Dnum,Pnumber σ(Plocation='Aveiro') project
+temp1 = ρ temp1 π Dnumber σ(Dlocation!='Aveiro') dept_location
+temp2 = ρ temp2 π temp.Pnumber (temp ⨝(temp.Dnum=temp1.Dnumber) temp1)
+π Fname,Minit,Lname,Address ((works_on ⨝(Pno=temp2.Pnumber) temp2) ⨝(Essn=Ssn) employee)
+
+5.2
+a)
+π nif,nome σ(fornecedor=null) (fornecedor ⟕(nif=fornecedor) encomenda)
+
+b) -----------------falta algo----------------------
+γ codProd,unidades; avg(unidades)->unidades_media item
+
+c)-------------------nao sei fazer-------------------
+
+d)
+π fornecedor.nome,item.unidades,produto.nome (((fornecedor ⨝(nif=fornecedor) encomenda) ⨝(numero=numEnc) item) ⨝(codProd=codigo) produto)
